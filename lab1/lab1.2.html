@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Data Visualisation Exercise 1"/>
+    <meta name="keywords" content="HTML, CSS"/>
+    <meta name="author" content="Your name here"/>
+
+    <title>Task 1.2 JavaScript</title>
+
+    <style>
+         h1 {
+            font-size: 34px;
+            font-weight: bold;
+            color: #136cc5;
+            margin-bottom: 10px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            letter-spacing: 2px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #022339;
+            margin-bottom: 20px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #16a085;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-transform: capitalize;
+            border-left: 5px solid #16a085;
+            padding-left: 10px;
+        }
+        img {
+            width: 60%;
+        }
+        .button1, .button2, .button3 {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button1 {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button2 {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .button3 {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .button1:hover {
+            background-color: #45a049;
+        }
+
+        .button2:hover {
+            background-color: #0b7dda;
+        }
+
+        .button3:hover {
+            background-color: #da190b;
+        }
+        footer{
+            background-color: rgb(221, 222, 224);
+        }
+
+        button {
+            background-color: #2246fd; 
+            border: none; 
+            color: white; 
+            padding: 15px 32px; 
+            text-align: center; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 16px; 
+            margin: 4px 2px;
+          
+            border-radius: 8px; 
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="window.location.href='../main.html'"> Home</button>
+        <button onclick="window.location.href='lab1.1.html'">lab1.1</button>
+        <button onclick="window.location.href='lab1.2.html'">lab1.2</button>
+        <button onclick="window.location.href='lab1.3.html'">lab1.3</button>
+    </div>
+
+    <h1>Title of Article about Interesting Visualisation</h1>
+    <h2>Author of Interesting Article</h2>
+
+    <h3>Pets and the Pandemic</h3>
+
+    <p>A report from Animal Medicines Australia (AMA) has found that many Australians took the opportunity
+        to introduce a pet into their household during the pandemic. 
+        Their survey indicated that there was a significant increase in the percent of households taking in a new dog, fish, or bird. 
+        Their research also indicated that pets had a number of positive influences on their lives such as:
+    <ul>
+        <li>companionship</li>
+        <li>better mental health</li>
+        <li>joy and happiness.</li>
+    </ul>
+    </p>
+    <br>
+
+    <button class="button1" onclick="show('int2019.png', 'Fig1. Percent of most popular pet owned by Australia in 2019', 'int2019')">2019</button>
+    <button class="button2" onclick="show('int2021.png', 'Fig2. Percent of most popular pet owned by Australia in 2021', 'int2021')">2021</button>
+    <button class="button3" onclick="show('both.png', 'Fig3. Percent of most popular pet owned by Australia in 2019 and 2021', 'both')">Both</button>
+
+    <figure>
+        <img id="ChartImg" style="width:50%; display: none;">
+        <figcaption id="ChartCap"></figcaption> 
+    </figure>
+
+    <!-- Update image and caption -->
+    <script>
+        function show(Image, ImgDesc, ImgAlt) {
+            document.getElementById('ChartImg').src = Image;
+            document.getElementById('ChartImg').alt = ImgAlt;
+            document.getElementById('ChartCap').innerHTML = ImgDesc;
+            document.getElementById('ChartImg').style.display = 'block';
+        }
+    </script>
+
+    <p>
+        With the increase in pet ownership, the AMA is encouraging policymakers to consider the needs of companion animals 
+        and their owners when considering rental, strata, and body corporate regulations as well as accepting animals in public places and transport.
+    </p>
+
+    <footer>COS30045 Data Visualisation</footer>
+
+</body>
+</html>

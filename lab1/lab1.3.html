@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Data Visualisation Exercise 1"/>
+    <meta name="keywords" content="HTML, CSS"/>
+    <meta name="author" content="MD JONAYED AHMED SHIHAB"/>
+
+    <title>Task 1.3 HTML and CSS Demo Page</title>
+
+   <style>
+    button {
+        background-color: #2246fd; 
+        border: none; 
+        color: white; 
+        padding: 15px 32px; 
+        text-align: center; 
+        text-decoration: none; 
+        display: inline-block; 
+        font-size: 16px; 
+        margin: 4px 2px;
+      
+        border-radius: 8px; 
+    }
+
+    
+</style>
+</head>
+<body>
+<div>
+    <button onclick="window.location.href='../main.html'"> Home</button>
+        <button onclick="window.location.href='lab1.1.html'">lab1.1</button>
+        <button onclick="window.location.href='lab1.2.html'">lab1.2</button>
+        <button onclick="window.location.href='lab1.3.html'">lab1.3</button>
+</div>
+<h1>Drawing Shapes with SVG</h1>
+<svg width="500" height="50" style="background-color:slategray;">
+
+    <g transform="translate(20,0)">
+    <circle cx="25" , cy="25" , r="25" fill="cornflowerblue" />
+    <rect x="50" , y="5" , width="50" , height="50" fill="rgb(100,149,237)" />
+    <ellipse cx="140"  cy="30" rx="40" ry="25"
+    fill="rgba(100,149,237,0.5)" />
+    <line x1="0" y1="30" x2="180" y2="30" stroke="black" 
+    stroke-width="5" />
+</g>
+
+</svg>
+<br>
+<br>
+<br>
+<h1>Drawing Shapes with SVG</h1>
+    <p>Pet ownership in 2019</p>
+    
+    <svg width="600" height="300"  style="background-color:slategray;">
+        
+        <rect x="50"  y="150" width="50" height="100" fill="#4a86e8"/>
+       
+        <rect x="120" y="170" width="50" height="80" fill="#4a86e8"/>
+       
+        <rect x="190" y="210" width="50" height="40" fill="#4a86e8"></rect>
+      
+        <rect x="260" y="230" width="50" height="20" fill="#4a86e8"/>
+     
+        <rect x="330" y="245" width="50" height="5" fill="#4a86e8"/>
+     
+        <rect x="400" y="245" width="50" height="5" fill="#4a86e8"/>
+    </svg>
+   
+    <footer style="color:grey">COS30045 Data Visualisation <br>
+        Semester2 2024 <br>Jonayed</footer>
+
+</body>
+</html>
