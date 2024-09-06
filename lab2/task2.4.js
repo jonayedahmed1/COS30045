@@ -30,14 +30,14 @@ function init(){
         .attr("y",function(d){
             return h - (d.wombats*4)
         })
-        //width and height of the bar chart
+      
         .attr("width",function(d){
             return (w/wombatSightings.length-barPadding);
         })
         .attr("height",function(d){
             return d.wombats*4;
         })
-        //colour of the bar changes depending on the value of the data
+        
         .attr("fill", function(d) {
                 return "rgb(135,206, " + (d.wombats * 8) + ")";
         });
