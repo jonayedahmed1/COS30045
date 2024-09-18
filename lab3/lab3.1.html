@@ -1,1 +1,114 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Data Visualisation Exercise 1"/>
+    <meta name="keywords" content="HTML, CSS"/>
+    <meta name="author" content="MD JONAYED AHMED SHIHAB"/>
+    <title>Task 3.1 Drawing with Data - Scatter Plot</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        button {
+            background-color: #2246fd; 
+            border: none; 
+            color: white; 
+            padding: 15px 32px; 
+            text-align: center; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 16px; 
+            margin: 4px 2px;
+            border-radius: 8px; 
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="window.location.href='../main.html'"> Home</button>
+        <button onclick="window.location.href='lab3.1.html'">lab3.1</button>
+        <button onclick="window.location.href='lab3.2.html'">lab3.2</button>
+       
+    </div>
+    <h1> Drawing with Data - Scatter Plot </h1>
 
+    <script>
+        var w = 500;
+        var h = 200;
+        var padding = 40;
+
+        var dataset = [
+            [5, 20],
+            [500, 90],
+            [250, 50],
+            [100, 30],
+            [330, 95],
+            [410, 12],
+            [475, 44],
+            [25, 67],
+            [85, 21],
+            [220, 88]
+        ];
+
+      
+        var xScale = d3.scaleLinear()
+            .domain([d3.min(dataset, function(d) {
+                 return d[0]; }),
+                     d3.max(dataset, function(d) {
+                 return d[0]; })])
+            .range([padding, w - padding]);
+
+
+        var yScale = d3.scaleLinear()
+            .domain([d3.min(dataset, function(d) { 
+                return d[1]; }),
+                     d3.max(dataset, function(d) {
+                 return d[1]; })])
+            .range([h - padding, padding]);
+
+       
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        //  circles
+        svg.selectAll("circle")
+            .data(dataset)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) {
+                return xScale(d[0]);
+            })
+            .attr("cy", function(d) {
+                return yScale(d[1]);
+            })
+            .attr("r", 5)
+            .attr("fill", function(d) {
+                return d[0] >= 500 ? "red" : "slategrey";
+            });
+
+        
+        svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function(d) {
+                return d[0] + "," + d[1];
+            })
+            .attr("x", function(d) {
+                return xScale(d[0]) + 5; 
+            })
+            .attr("y", function(d) {
+                return yScale(d[1]) - 5;  
+            })
+            .attr("font-size", "12px")
+            .attr("fill", "green");
+
+    </script>
+
+    <br>
+    <b>
+        <footer style="color:grey">COS30045 Data Visualisation<br> MD Jonayed Ahmed Shihab</footer>
+    </b>
+
+</body>
+</html>
