@@ -1,1 +1,168 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="description" content="Data Visualisation Exercise 1"/>
+	<meta name="keywords" content="HTML, CSS"/>
+	<meta name="author" content="MD JONAYED AHMED SHIHAB"/>
+	<title>Task 5.1 D3 Update</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        button {
+            background-color: #2246fd; 
+            border: none; 
+            color: white; 
+            padding: 15px 32px; 
+            text-align: center; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-size: 16px; 
+            margin: 4px 2px;
+            border-radius: 8px; 
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="window.location.href='../main.html'"> Home</button>
+        <button onclick="window.location.href='lab5.1.html'">lab5.1</button>
+        <button onclick="window.location.href='lab5.2.html'">lab5.2</button>
+        <button onclick="window.location.href='lab5.3.html'">lab5.3</button>
+      
+    </div>
+    <h1>Update Data</h1>
+    <!--add button-->
+    <button id="chartbutton">Update once</button>
+    
+    
+    <br>
 
+    <script>
+        
+        d3.select("#chartbutton")
+            .on("click", function (){
+                updateChart();
+            });
+
+        var dataset = [24,10,29,19,8,15,20,12,9,6,21,28];
+        var w =300;
+        var h=200;
+        var maxValues = 25;
+        var padding = 20;
+            
+        function updateChart(){
+            var numValues = dataset.length;
+            
+            dataset = [];
+                for (let i=0; i<numValues; i++){
+                    let newNumber = Math.floor(Math.random() * maxValues);
+                    dataset.push(newNumber);
+                }
+
+            // Update yScale domain based on the new data
+            yScale.domain([0, d3.max(dataset)]);
+
+            // Update bars
+            svg.selectAll("rect")
+                .data(dataset)
+                .attr("y", function(d) {
+                     return yScale(d);
+                })
+                .attr("height", function(d) {
+                     return h - yScale(d);
+                });
+
+            // Update text labels
+            svg.selectAll("text")
+                .data(dataset)
+                .text(function(d) {
+                    return d;
+                })
+                .attr("y", function(d) {
+                    return yScale(d) + 15;
+                });
+            
+        }
+
+        var xScale = d3.scaleBand()
+                        .domain(d3.range(dataset.length))
+                        .rangeRound([padding , w])
+                        .paddingInner(0.05);
+
+        var yScale = d3.scaleLinear()
+                        .domain([0, d3.max(dataset)])
+                        .rangeRound([h - padding , 0 ])
+
+        var svg = d3.select("body")
+                    .append("svg")
+                    .attr("width",w)
+                    .attr("height", h + 30);
+
+                    
+        svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("fill", "skyblue")
+            .attr("x", function(d, i) {
+                return xScale(i);  // Use xScale for x-position
+            })
+            .attr("y", function(d) {
+                return yScale(d);  // Use yScale for y-position
+            })
+            .attr("width", xScale.bandwidth())
+            .attr("height", function(d) {
+                return h - yScale(d) - padding;
+            });;
+
+        svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function(d){
+                return d;
+            })
+            .attr("fill", "black")
+            .attr("x", function(d,i){
+                return xScale(i) + xScale.bandwidth() / 2;
+            })
+            .attr("y",function(d){
+                return yScale(d) + 15;
+            })
+            .attr("text-anchor", "middle");;
+
+            
+        // X Axis
+            var xAxis = d3.axisBottom(xScale);
+            svg.append("g")
+                .attr("transform", "translate(0," + (h - padding) + ")")
+                .call(xAxis);
+
+            // Y Axis
+            var yAxis = d3.axisLeft(yScale);
+            svg.append("g")
+                .attr("transform", "translate(" + padding + ",0)")
+                .call(yAxis);
+
+            // X Axis Label
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("x", w / 2)
+                .attr("y", h + 20)
+                .text("Category");
+
+            // Y Axis Label
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("transform", "rotate(-90)")
+                .attr("x", -h / 2)
+                .attr("y", 0)
+                .text("Value");
+    
+    </script>
+    
+    <br>
+    <b>
+        <footer style="color:grey">COS30045 Data Visualisation<br> MD Jonayed Ahmed Shihab</footer>
+    </b>
+</body>
+</html>
